@@ -1,0 +1,95 @@
+{
+  "command-line": "python wrapper.py CYTOMINE_HOST CYTOMINE_PUBLIC_KEY CYTOMINE_PRIVATE_KEY CYTOMINE_ID_PROJECT CYTOMINE_ID_SOFTWARE GBLURRAD MEANBOX OFFSET ",
+  "inputs": [
+    {
+      "name": "Cytomine host",
+      "description": "Cytomine server hostname",
+      "set-by-server": true,
+      "value-key": "@ID",
+      "optional": false,
+      "id": "cytomine_host",
+      "type": "String",
+      "command-line-flag": "--@id"
+    },
+    {
+      "name": "Cytomine public key",
+      "description": "Cytomine public key",
+      "set-by-server": true,
+      "value-key": "@ID",
+      "optional": false,
+      "id": "cytomine_public_key",
+      "type": "String",
+      "command-line-flag": "--@id"
+    },
+    {
+      "name": "Cytomine private key",
+      "description": "Cytomine private key",
+      "set-by-server": true,
+      "value-key": "@ID",
+      "optional": false,
+      "id": "cytomine_private_key",
+      "type": "String",
+      "command-line-flag": "--@id"
+    },
+    {
+      "name": "Cytomine project id",
+      "description": "Cytomine project id",
+      "set-by-server": true,
+      "value-key": "@ID",
+      "optional": false,
+      "id": "cytomine_id_project",
+      "type": "Number",
+      "command-line-flag": "--@id"
+    },
+    {
+      "name": "Cytomine software id",
+      "description": "Cytomine software id",
+      "set-by-server": true,
+      "value-key": "@ID",
+      "optional": false,
+      "id": "cytomine_id_software",
+      "type": "Number",
+      "command-line-flag": "--@id"
+    },
+    {
+      "default-value": 3,
+      "name": "Gaussian Blur Radius",
+      "description": "Gaussian Blur Radius pre-filter",
+      "set-by-server": false,
+      "value-key": "@ID",
+      "optional": true,
+      "id": "gblurrad",
+      "type": "Number",
+      "command-line-flag": "--@id"
+    },
+    {
+      "default-value": 101,
+      "name": "Mean Box",
+      "description": "Size of the box used to perform local mean for local thresholding",
+      "set-by-server": false,
+      "value-key": "@ID",
+      "optional": true,
+      "id": "meanbox",
+      "type": "Number",
+      "command-line-flag": "--@id"
+    },
+    {
+      "default-value": 5,
+      "name": "Threshold offset",
+      "description": "Local theshold offset level",
+      "set-by-server": false,
+      "value-key": "@ID",
+      "optional": true,
+      "id": "offset",
+      "type": "Number",
+      "command-line-flag": "--@id"
+    }
+  ],
+  "name": "ObjectTracking-Octave",
+  "description": "Nuclei tracking in 2D time-lapse with Octave tracker (adapted from Matlab LOBSTER version: https://github.com/SebastienTs/LOBSTER)",
+  "schema-version": "cytomine-0.1",
+  "container-image": {
+    "image": "neubiaswg5/w_objecttracking-octave",
+    "type": "singularity"
+  }
+}

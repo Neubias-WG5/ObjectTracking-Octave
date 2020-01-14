@@ -556,8 +556,8 @@ trackend = zeros(Nobj,1);
 Parent(Nobj+1) = 0;
 for i = 1:Nobj
 	inds = find(tracklives(:,i+1)>0);
-	trackstart(i) = inds(1);
-	trackend(i) = inds(end);
+	trackstart(i) = inds(1)-1;
+	trackend(i) = inds(end)-1;
 end
 M = [(1:Nobj).' trackstart trackend Parent(1:end-1).'];
 

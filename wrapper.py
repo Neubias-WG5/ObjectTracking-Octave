@@ -20,7 +20,7 @@ def main(argv):
         # 3. Call the image analysis workflow using the run script
         nj.job.update(progress=25, statusComment="Launching workflow...")
         command = "octave-cli " \
-                  "-qf /app/Track_script.m \"{} {} {} {} {}\"" \
+                  "-qf /app/Track_script.m {} {} {} {} {}" \
                     .format(in_path, out_path, nj.parameters.gblurrad, nj.parameters.meanbox, nj.parameters.offset)					
         return_code = call(command, shell=True, cwd="/app")  # waits for the subprocess to return
 

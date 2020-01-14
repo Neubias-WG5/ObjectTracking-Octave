@@ -35,12 +35,12 @@ Export = 1;         % Export result images to files
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Files = dir(strcat([InputFolder '*.tif']));
+Files = dir(fullfile(InputFolder,'*.tif'));
 num_movies = numel(Files);
 
 for m = 1:num_movies
 
-inf = imfinfo(strcat([InputFolder Files(m).name]));
+inf = imfinfo(fullfile(InputFolder,Files(m).name));
 num_images = numel(inf);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,7 +65,7 @@ for kf = 1:num_images
     fprintf('.');
     
 	%% Read image
-	A = imread(strcat([InputFolder Files(m).name]),kf);
+	A = imread(fullfile(InputFolder,Files(m).name),kf);
 	
     %% Threshold image (+ split objects)
 	A = imsmooth(single(A),'Gaussian',GBlurRad,GBlurRad) >= (Offset+imfilter(single(A),ones(MeanBox,MeanBox)/(MeanBox*MeanBox),'same','symmetric'));
@@ -543,7 +543,7 @@ for kf = 1:num_images
 end
 
 if Export == 1
-	imwrite(ObjLblMask,strcat(OutputFolder,Files(m).name));
+	imwrite(ObjLblMask,fullfile(OutputFolder,Files(m).name));
 end
 
 %% Create CTC division text file
@@ -563,7 +563,7 @@ M = [(1:Nobj).' trackstart trackend Parent(1:end-1).'];
 
 %% Write division text file
 FileName = Files(m).name;
-dlmwrite(strcat(OutputFolder,FileName(1:end-4),'.txt'),M,'delimiter',' ');
+dlmwrite(strcat(fullfile(OutputFolder,FileName(1:end-4)),'.txt'),M,'delimiter',' ');
 disp(' ');
 
 end

@@ -1,12 +1,12 @@
 import sys
 from subprocess import call
 from cytomine.models import Job
-from neubiaswg5 import CLASS_OBJTRK
-from neubiaswg5.helpers import get_discipline, NeubiasJob, prepare_data, upload_data, upload_metrics
+from biaflows import CLASS_OBJTRK
+from biaflows.helpers import get_discipline, BiaflowsJob, prepare_data, upload_data, upload_metrics
 
 def main(argv):
     # 0. Initialize Cytomine client and job if necessary and parse inputs
-    with NeubiasJob.from_cli(argv) as nj:
+    with BiaflowsJob.from_cli(argv) as nj:
         problem_cls = get_discipline(nj, default=CLASS_OBJTRK)
         is_2d = False
         nj.job.update(status=Job.RUNNING, progress=0,
